@@ -12,6 +12,7 @@ import './App.scss';
 
 export function App() {
   const [activePosition, setActivePosition] = useState(-1);
+  const [successPosition, setSuccessPosition] = useState(-1);
   const [placeholderWidth, setPlaceholderWidth] = useState(0);
 
   const [activeElement, setActiveElement] = useState<{
@@ -35,6 +36,7 @@ export function App() {
   ]);
 
   function handleDragStart(event: DragStartEvent) {
+    setSuccessPosition(-1);
     const { active } = event;
     const activeElement = document.getElementById(active.id.toString());
 
@@ -69,6 +71,7 @@ export function App() {
     const itemPosition = active.data.current?.position;
 
     if (itemType === 'CARD') {
+      setSuccessPosition(insertPosition);
       setWords(prevWords => {
         return [
           ...prevWords.slice(0, insertPosition),
@@ -81,12 +84,13 @@ export function App() {
         return prevCards.filter(card => card !== itemText);
       });
     } else if (itemType === 'WORD_PART') {
+      const successPosition =
+        itemPosition > insertPosition ? insertPosition : insertPosition - 1;
+      setSuccessPosition(successPosition);
       setWords(prevWords => {
-        const pos =
-          itemPosition > insertPosition ? insertPosition : insertPosition - 1;
         const newWords = prevWords.slice();
         newWords.splice(itemPosition, 1);
-        newWords.splice(pos, 0, itemText);
+        newWords.splice(successPosition, 0, itemText);
 
         return newWords;
       });
@@ -97,6 +101,7 @@ export function App() {
     <div className="main">
       <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
         <WordPartsSection
+          successPlaceholderPosition={successPosition}
           activeWordPartPosition={activePosition}
           placeholderWidth={placeholderWidth}
           wordParts={words}

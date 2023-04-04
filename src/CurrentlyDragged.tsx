@@ -17,7 +17,7 @@ export function CurrentlyDragged({ activeElement }: Props) {
   const { id, position, text, type } = activeElement;
 
   return type === 'WORD_PART' ? (
-    <WordPart item={text} position={position} />
+    <WordPart success={false} item={text} position={position} />
   ) : (
     <Card item={text} position={position} />
   );

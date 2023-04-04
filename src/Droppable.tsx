@@ -2,13 +2,14 @@ import { useDroppable } from '@dnd-kit/core';
 import classNames from 'classnames';
 
 type Props = {
+  success: boolean;
   width: number;
   id: string;
   position: number;
   disabled: boolean;
 };
 
-export function Droppable({ id, width, position, disabled }: Props) {
+export function Droppable({ id, width, position, disabled, success }: Props) {
   const { setNodeRef, isOver } = useDroppable({
     id,
     data: {
@@ -26,6 +27,7 @@ export function Droppable({ id, width, position, disabled }: Props) {
       ref={setNodeRef}
       className={classNames('placeholder', {
         expanded: isOver,
+        success,
       })}
       style={style}
     />

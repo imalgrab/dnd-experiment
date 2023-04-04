@@ -1,11 +1,13 @@
 import { useDraggable } from '@dnd-kit/core';
+import classNames from 'classnames';
 
 type Props = {
+  success: boolean;
   item: string;
   position: number;
 };
 
-export function WordPart({ item, position }: Props) {
+export function WordPart({ item, position, success }: Props) {
   const { isDragging, setNodeRef, attributes, listeners } = useDraggable({
     id: item,
     data: {
@@ -22,7 +24,7 @@ export function WordPart({ item, position }: Props) {
     <div
       id={item}
       ref={setNodeRef}
-      className="word-part"
+      className={classNames('word-part', { success })}
       {...attributes}
       {...listeners}
       style={style}

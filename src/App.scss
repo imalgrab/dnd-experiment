@@ -1,3 +1,16 @@
+@keyframes insert {
+  from {
+    transform: scale(0.5) translateY(-15%);
+    background: white;
+    border-width: 2px solid e3e0dc;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    background: #a0aee8;
+    border: none;
+  }
+}
+
 li {
   list-style-type: none;
 }
@@ -40,6 +53,9 @@ li {
     font-size: 32px;
     color: white;
   }
+  &.success {
+    animation: insert 1s linear both;
+  }
 }
 
 .placeholder {
@@ -53,6 +69,9 @@ li {
     margin: 0px 8px;
     opacity: 0.5;
     padding: 0px;
+  }
+  &.success {
+    transition: unset;
   }
 }
 
