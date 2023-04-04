@@ -1,0 +1,73 @@
+li {
+  list-style-type: none;
+}
+
+.main {
+  background: #f5f5f5;
+}
+
+.upper-section {
+  justify-content: center;
+  display: flex;
+  border: 1px dashed darkblue;
+  padding: 64px;
+}
+
+.lower-section {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border: 1px dashed darkgreen;
+  padding: 24px;
+  gap: 8px;
+}
+
+.item-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+// WORD_PART
+
+.word-part {
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #a0aee8;
+  padding: 8px 24px;
+  .word-part-text {
+    font-size: 32px;
+    color: white;
+  }
+}
+
+.placeholder {
+  transition: all 0.5s linear;
+  padding: 8px;
+  opacity: 0;
+  width: 0;
+  border-radius: 4px;
+  &.expanded {
+    background: #a0aee8;
+    margin: 0px 8px;
+    opacity: 0.5;
+    padding: 0px;
+  }
+}
+
+// CARD
+
+.card {
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  padding: 8px 24px;
+  border: 2px solid #e3e0dc;
+  .card-text {
+    font-size: 26px;
+    color: #e3e0dc;
+  }
+}
